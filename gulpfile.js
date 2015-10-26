@@ -3,12 +3,12 @@ var gulp         = require('gulp'),
 
     // image
     imagemin     = require('gulp-imagemin'),
-    plumber      = require('gulp-plumber'),
+    newer        = require('gulp-newer'),
 
     // style
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    
+
     // html
     fileinclude  = require('gulp-file-include'),
 
@@ -28,7 +28,8 @@ var paths  = { image: './images/**/*', style: './style.scss', script: './script.
 // IMAGE
 gulp.task('image', function() {
 	gulp.src(paths.image)
-		.pipe(imagemin({progressive: true}).on('error', gutil.log))
+		.pipe(newer(dest + '/images'))
+		.pipe(imagemin().on('error', gutil.log))
 		.pipe(gulp.dest(dest + '/images'));
 });
 
