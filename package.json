@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Interface study for threejs editor",
   "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": {},
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/felipedefarias/mirtilo.git"
   },
   "keywords": [
     "Interface",
@@ -23,9 +25,7 @@
     "gulp-file-include": "^0.13.7",
     "gulp-imagemin": "^2.3.0",
     "gulp-newer": "^1.0.0",
-    "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.4",
-    "gulp-util": "^3.0.7",
-    "sass-svg": "^0.2.1"
+    "gulp-util": "^3.0.7"
   }
 }
