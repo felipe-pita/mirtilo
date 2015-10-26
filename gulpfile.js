@@ -12,9 +12,6 @@ var gulp         = require('gulp'),
     // HTML
     fileinclude  = require('gulp-file-include'),
 
-    // DEPLOY
-    ghPages      = require('gulp-gh-pages'),
-
     // BS
     browserSync = require('browser-sync').create();
 
@@ -65,13 +62,6 @@ gulp.task('html', function() {
 			basepath: '@file'
 		}).on('error', gutil.log))
 		.pipe(gulp.dest(dest));
-});
-
-
-// DEPLOY
-gulp.task('deploy', function() {
-  return gulp.src('./_public/**/*')
-    .pipe(ghPages());
 });
 
 

@@ -123,7 +123,7 @@ $submenuBG: $cinza4;
 		content: "";
 		width: 13px;
 		height: 13px;
-		background: url('#{$svg} @@include("images/check.svg", {"fill": "#{$cinza1}"})') no-repeat center;
+		background: url('#{$svg} @@include("images/check.svg", {"fill": "#{$high}"})') no-repeat center;
 		display: block;
 		position: absolute;
 		margin: 10px 10px 0 0;
@@ -350,18 +350,52 @@ $submenuBG: $cinza4;
 			}
 		}
 
-		.addplane       { background-image: url('#{$svg} @@include("images/plane.svg",       { "fill": "#{$high}" }) '); }
-		.addbox         { background-image: url('#{$svg} @@include("images/box.svg",         { "fill": "#{$high}" }) '); }
-		.addcircle      { background-image: url('#{$svg} @@include("images/circle.svg",      { "fill": "#{$high}" }) '); }
-		.addcylinder    { background-image: url('#{$svg} @@include("images/cylinder.svg",    { "fill": "#{$high}" }) '); }
-		.addsphere      { background-image: url('#{$svg} @@include("images/sphere.svg",      { "fill": "#{$high}" }) '); }
-		.addicosahedron { background-image: url('#{$svg} @@include("images/icosahedron.svg", { "fill": "#{$high}" }) '); }
-		.addtorus       { background-image: url('#{$svg} @@include("images/torus.svg",       { "fill": "#{$high}" }) '); }
-		.addtorusknot   { background-image: url('#{$svg} @@include("images/torusknot.svg",   { "fill": "#{$high}" }) '); }
-		.addsprite      { background-image: url('#{$svg} @@include("images/sprite.svg",      { "fill": "#{$high}" }) '); }
+
+		$icons: "plane",
+				"box",
+				"circle",
+				"cylinder",
+				"sphere",
+				"icosahedron",
+				"torus",
+				"torusknot",
+				"sprite",
+				"pointlight",
+				"perspectivecamera";
+
+		@each $icon in $icons {
+			.add#{$icon} { 
+				background-image: url('#{$svg} @@include("images/#{$icon}.svg", { "fill": "#{$high}" }) '); 
+
+				&:hover { 
+					background-image: url('#{$svg} @@include("images/#{$icon}.svg", {"fill": "#{$cinza3}" }) '); 
+				} 
+			}
+		}
+
 
 		&__options {
-			display: none;
+			// display: none;
+			position: absolute;
+			background-color: darken($cinza3, 2%);
+			border: 1px solid $cinza4;
+			border-radius: 0 5px 5px 5px;
+			overflow: hidden;
+
+			&--option {
+				padding: 11px 8px 7px 27px;
+				background-repeat: no-repeat;
+				background-position: 8px 50%;
+				font-size: 12px;
+				line-height: 12px;
+				color: $cinzaC;
+				cursor: pointer;
+
+				&:hover {
+					background-color: $high;
+					color: $cinza3
+				}
+			}
 		}
 	}
 
