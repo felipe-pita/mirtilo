@@ -1,16 +1,19 @@
 var gulp         = require('gulp'),
     gutil        = require('gulp-util'),
 
-    // image
+    // IMAGE
     imagemin     = require('gulp-imagemin'),
     newer        = require('gulp-newer'),
 
-    // style
+    // STYLE
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
 
-    // html
+    // HTML
     fileinclude  = require('gulp-file-include'),
+
+    // DEPLOY
+    ghPages      = require('gulp-gh-pages'),
 
     // BS
     browserSync = require('browser-sync').create();
@@ -62,6 +65,13 @@ gulp.task('html', function() {
 			basepath: '@file'
 		}).on('error', gutil.log))
 		.pipe(gulp.dest(dest));
+});
+
+
+// DEPLOY
+gulp.task('deploy', function() {
+  return gulp.src('./_public/**/*')
+    .pipe(ghPages());
 });
 
 
