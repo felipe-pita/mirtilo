@@ -1,0 +1,426 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block; } body {line-height: 1; } ol, ul {list-style: none; } blockquote, q {quotes: none; } blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none; } table {border-collapse: collapse; border-spacing: 0; } body { font-family: "Fira Sans", Arial, sans-serif; } a { color: inherit; text-decoration: none; } *,:after,:before {box-sizing:border-box}
+
+// kappa loading
+#__bs_notify__ { top: 0 !important; left: 0 !important; right: inherit !important; width: 0px !important; height: 2px !important; padding: 0 !important; background: #2194CE !important; text-indent: -999px !important; animation: kappa 2s cubic-bezier(0.65, 0.05, 0.36, 1) 1 !important; overflow: hidden !important; } @keyframes kappa {100% {width: 100%; } }
+
+// ----------------------------------------------------------------
+// Vars
+// ================================================================
+
+// cinzas e pretos
+$cinza0: #000;
+$cinza1: #111;
+$cinza2: #222;
+$cinza3: #333;
+$cinza4: #444;
+$cinza5: #555;
+$cinza6: #666;
+$cinza7: #777;
+$cinza8: #888;
+$cinza9: #999;
+$cinzaA: #AAA;
+$cinzaB: #BBB;
+$cinzaC: #CCC;
+$cinzaD: #DDD;
+$cinzaE: #EEE;
+$cinzaF: #FFF;
+
+$high: #2194CE;
+
+$svg: 'data:image/svg+xml; utf8,';
+
+
+// ----------------------------------------------------------------
+// structure
+// ================================================================
+
+body { background-color: $cinza9; }
+
+// Header 
+header {
+
+}
+
+
+// Viewport
+main {
+	width: 100%;
+	height: calc(100vh - 140px);
+	display: flex;
+}
+
+// sidebar
+aside {
+
+}
+
+
+// Tools
+footer {
+}
+
+// ----------------------------------------------------------------
+// Inputs
+// ================================================================
+
+.checkbox {
+
+	input {
+		margin: 0;
+		width: 14px;
+		height: 14px;
+		vertical-align: middle;
+		appearance: none;
+		outline: 0;
+
+		&::before, &::after {
+			content: "";
+			display: none;
+			position: absolute;
+			display: block;
+			width: 14px;
+			height: 14px;
+			cursor: pointer;
+		}
+
+		&::before {
+			display: block;
+			border: 1px solid $cinza6;
+		}
+
+		&:checked::after {
+			display: block;
+			background: url('#{$svg} @@include("images/check.svg", {"fill": "#{$high}"})') center no-repeat;
+		}
+	}
+
+	label {
+		color: $cinza9;
+		cursor: pointer;
+		font-size: 14px;
+		display: inline-block;
+		vertical-align: bottom;
+		padding-left: 5px;
+	}
+}
+
+
+// ----------------------------------------------------------------
+// Menu
+// ================================================================
+
+$submenuColor: $cinzaD;
+$submenuBG: $cinza4;
+
+.menu {
+	width: 100%;
+	height: 40px;
+	background: $cinza3;
+	display: flex;
+	justify-content: space-between;
+
+	li.active::before { 
+		content: "";
+		width: 13px;
+		height: 13px;
+		background: url('#{$svg} @@include("images/check.svg", {"fill": "#{$cinza1}"})') no-repeat center;
+		display: block;
+		position: absolute;
+		margin: 10px 10px 0 0;
+		background-size: contain;
+		right: 0;
+	}
+
+	&__main-options {
+		display: flex;
+
+		&--option {
+			position: relative;
+
+			> a { 
+				font-size: 14px;
+				padding: 15px; 
+				line-height: 0.8em;
+				display: block;
+				white-space: pre;
+				color: $submenuColor;
+				transition: background-color .3s ease, color .1s ease;
+			}
+
+			&:hover > a {
+				background-color: $submenuBG;
+			}
+
+			&:hover .menu__submenu { display: block; animation: submenuOpen .3s ease 1; }
+		}
+	}
+
+
+	// Submenu
+	&__submenu {
+		position: absolute;
+		z-index: 500;
+		display: none;
+		background-color: $submenuBG;
+		opacity: 1;
+		min-width: 150px;
+		box-shadow: 1px 1px 0 rgba($cinza0, .2);
+		transform-origin: 0 0;
+
+		&--option {
+			border-bottom: 1px solid darken($submenuBG, 5%);
+
+			a {
+				display: block;
+				padding: 10px 15px;
+				font-size: 14px;
+				color: $submenuColor;
+				white-space: pre;
+			}
+
+			&:hover { 
+				background-color: darken($submenuBG, 5%); 
+
+				> a { color: $high; }
+			}
+
+			&:last-child { border-bottom: 0; }
+
+			&.hr { border-bottom-color: darken($submenuBG, 10%) }
+
+			&.has-extended::after { 
+				content: "";
+				width: 6px;
+				height: 12px;
+				position: absolute;
+				right: 10px;
+				background: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$submenuColor}"})') no-repeat center;
+				margin-top: -24px;
+			}
+
+			&.has-extended:hover::after { 
+				background-image: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$high}"})');
+			}
+
+			&:hover .menu__extended { display: block; animation: submenuOpen .3s ease 1; }
+		}
+
+	}
+
+	// Menu expandido
+	&__extended {
+		position: absolute;
+		display: none;
+		left: 100%;
+		margin-top: -34px;
+		min-width: 150px;
+		background-color: darken($submenuBG, 5%);
+		box-shadow: 1px 1px 0 rgba($cinza0, .4), 1px 0 2px rgba($cinza0, .1) inset;
+		transform-origin: 0 0;
+
+		&--option {
+			border-bottom: 1px solid darken($submenuBG, 10%);
+
+			a { white-space: pre; }
+
+			&:hover { 
+				background-color: darken($submenuBG, 10%); 
+
+				> a { color: $high; }
+			}
+
+			&:last-child { border-bottom: 0; }
+		}
+	}
+
+
+	// Botao de opções
+	&__settings {
+		display: flex;
+		align-items: center;
+
+		> div { margin-right: 15px;	}
+
+		&--autosave {  }
+
+		&--button {
+			border: 1px solid $cinza4;
+			border-radius: 5px;
+			padding: 6px 14px;
+			font-size: 14px;
+			color: $cinza9;
+			cursor: pointer;
+
+			svg {
+				margin-right: 4px;
+				display: inline-block;
+				vertical-align: bottom;
+			}
+
+			&:hover {
+				border-color: $high;
+				background-color: $high;
+				color: $cinza3;
+
+				svg path {
+					fill: $cinza3;
+				}
+			}
+		}
+	}
+}
+
+@keyframes submenuOpen {
+	from { 
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	
+	to   { 
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+
+
+// ----------------------------------------------------------------
+// Action menu
+// ================================================================
+
+.action {
+	width: 100%;
+	height: 60px;
+	background-color: darken($cinza3, 2%);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 15px;
+
+	&__add { display: flex; }
+
+	&__selector {
+		margin-right: 30px;
+
+		&__current-action {
+			width: 40px;
+			height: 40px;
+			padding: 8px;
+			background-repeat: no-repeat;
+			background-size: 22px;
+			background-position: center;
+			border: 1px solid $cinza4;
+			border-radius: 5px 0 0 5px;
+			position: relative;
+			cursor: pointer;
+
+			.expand-options {
+				display: block;
+				width: 15px;
+				height: 40px;
+				position: absolute;
+				right: 0;
+				top: -1px;
+				margin-right: -15px;
+				border: 1px solid $cinza4;
+				border-radius: 0 5px 5px 0;
+				background-color: lighten($cinza3, 2%);
+				cursor: pointer;
+
+				&:hover { background-color: lighten($cinza3, 8%); }
+
+				&::before {
+					content: "";
+					position: absolute;
+					width: 6px;
+					height: 12px;
+					transform: rotate(90deg);
+					background-image: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$high}"})');
+					background-repeat: no-repeat;
+					background-position: center;
+					left: 50%;
+					top: 50%;
+					margin-top: -6px;
+					margin-left: -3px;
+				}
+
+				&.disabled {
+					background: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$high}"})');
+				}
+			}
+		}
+
+		.addplane       { background-image: url('#{$svg} @@include("images/plane.svg",       { "fill": "#{$high}" }) '); }
+		.addbox         { background-image: url('#{$svg} @@include("images/box.svg",         { "fill": "#{$high}" }) '); }
+		.addcircle      { background-image: url('#{$svg} @@include("images/circle.svg",      { "fill": "#{$high}" }) '); }
+		.addcylinder    { background-image: url('#{$svg} @@include("images/cylinder.svg",    { "fill": "#{$high}" }) '); }
+		.addsphere      { background-image: url('#{$svg} @@include("images/sphere.svg",      { "fill": "#{$high}" }) '); }
+		.addicosahedron { background-image: url('#{$svg} @@include("images/icosahedron.svg", { "fill": "#{$high}" }) '); }
+		.addtorus       { background-image: url('#{$svg} @@include("images/torus.svg",       { "fill": "#{$high}" }) '); }
+		.addtorusknot   { background-image: url('#{$svg} @@include("images/torusknot.svg",   { "fill": "#{$high}" }) '); }
+		.addsprite      { background-image: url('#{$svg} @@include("images/sprite.svg",      { "fill": "#{$high}" }) '); }
+
+		&__options {
+			display: none;
+		}
+	}
+
+	&__play {
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		border-radius: 5px;
+		border: 1px solid $high;
+		padding: 8px 8px 8px 12px;
+		cursor: pointer;
+		transition: all .2s ease;
+		background: url('#{$svg} @@include("images/play.svg", { "fill": "#{$high}" })') no-repeat 60% 50%;
+
+		&:hover { 
+			background-color: $cinza2; 
+		}
+
+		&:active { 
+			background-color: $high;
+			background-image: url('#{$svg} @@include("images/play.svg", { "fill": "#{$cinza3}" })');
+		}
+	}
+}
+
+
+
+// ----------------------------------------------------------------
+// Viewport
+// ================================================================
+
+.viewport {
+	width: 100%;
+	background-color: $cinzaA;
+}
+
+
+
+// ----------------------------------------------------------------
+// Sidebar
+// ================================================================
+
+.sidebar {
+	width: 250px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	background-color: $cinza3;
+}
+
+
+
+// ----------------------------------------------------------------
+// Tools
+// ================================================================
+
+.tools {
+	width: 100%;
+	height: 40px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	background-color: $cinza3;
+}

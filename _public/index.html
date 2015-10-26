@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pr-BR">
+<head>
+	<meta charset="UTF-8">
+	<title>Threejs editor</title>
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<nav class="menu">
+	<ul class="menu__main-options">
+		<li class="menu__main-options--option">
+			<a href="#">File</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">New</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Import</a>
+				</li>
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Export</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option">
+							<a href="#">Export Geometry</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Export Object</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Export Scene</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Export OBJ</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Export STL</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Publish</a>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">Edit</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">Undo</a>
+				</li>
+				<li class="menu__submenu--option hr">
+					<a href="#">Redo</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Clone</a>
+				</li>
+				<li class="menu__submenu--option hr">
+					<a href="#">Delete</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Minify Shaders</a>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">Add</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">Group</a>
+				</li>
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Object</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option">
+							<a href="#">Plane</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Box</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Circle</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Cylinder</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Sphere</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Icosahedron</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Torus</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">TorusKnot</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Sprite</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Light</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option">
+							<a href="#">PointLight</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">SpotLight</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">DirectionalLight</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">HemisphereLight</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">AmbientLight</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Camera</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option">
+							<a href="#">PerspectiveCamera</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">View</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Theme</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option active">
+							<a href="#">Dark theme</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Light theme</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Full Screen</a>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">Examples</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">Arkanoide</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Camera</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Particles</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Pong</a>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">Help</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">Source code</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">About</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div class="menu__settings">
+		<div class="menu__settings--autosave">
+			<div class="checkbox">
+				<input id="autoSave" type="checkbox" value="on" checked>
+				<label for="autoSave">Auto Save</label>
+			</div>
+		</div>
+		<div class="menu__settings--button">
+			<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14.088" viewBox="51.973 0.012 14 14.088"><path fill="#999" d="M65.973 8.325V5.788l-1.575-.26c-.088-.354-.263-.704-.525-1.227l.966-1.313-1.846-1.834-1.31.965c-.435-.265-.876-.44-1.226-.53L60.285.01h-2.54l-.264 1.575c-.437.09-.79.265-1.224.528l-1.31-.962-1.84 1.837.878 1.316c-.264.437-.352.786-.522 1.227l-1.49.172V8.24l1.574.263c.088.44.26.788.522 1.226l-.873 1.31 1.836 1.84 1.316-.88c.346.175.787.35 1.225.524l.267 1.576h2.62l.263-1.574c.436-.086.786-.262 1.225-.525l1.31.965 1.84-1.836-.963-1.315c.263-.436.437-.873.527-1.225l1.31-.264zm-7 1.313c-1.49 0-2.624-1.14-2.624-2.625s1.133-2.625 2.62-2.625 2.625 1.14 2.625 2.625c0 1.486-1.137 2.625-2.624 2.625z"/></svg> Settings
+		</div>
+	</div>
+</nav>
+		<div class="action">
+
+	<!-- I really don't know the better way to do this :/ -->
+
+	<div class="action__add">
+
+		<div class="action__selector">
+			<div class="action__selector__current-action addbox" data-action="addBox"><span class="expand-options"></span></div>
+			<ul class="action__selector__options">
+				<li class="action__selector__options--option addplane"       data-set-action="addplane">       Plane       </li>
+				<li class="action__selector__options--option addbox"         data-set-action="addbox">         Box         </li>
+				<li class="action__selector__options--option addcircle"      data-set-action="addcircle">      Circle      </li>
+				<li class="action__selector__options--option addcylinder"    data-set-action="addcylinder">    Cylinder    </li>
+				<li class="action__selector__options--option addsphere"      data-set-action="addsphere">      Sphere      </li>
+				<li class="action__selector__options--option addicoshaedron" data-set-action="addicoshaedron"> Icosahedron </li>
+				<li class="action__selector__options--option addtorus"       data-set-action="addtorus">       Torus       </li>
+				<li class="action__selector__options--option addtorusknot"   data-set-action="addtorusknot">   Torus Knot  </li>
+				<li class="action__selector__options--option addsprite"      data-set-action="addsprite">      Sprite      </li>
+			</ul>
+		</div>
+
+		<div class="action__selector">
+			<div class="action__selector__current-action addbox" data-action="addBox"><span class="expand-options"></span></div>
+			<ul class="action__selector__options">
+				<li class="action__selector__options--option addplane"       data-set-action="addplane">       Plane       </li>
+				<li class="action__selector__options--option addbox"         data-set-action="addbox">         Box         </li>
+				<li class="action__selector__options--option addcircle"      data-set-action="addcircle">      Circle      </li>
+				<li class="action__selector__options--option addcylinder"    data-set-action="addcylinder">    Cylinder    </li>
+				<li class="action__selector__options--option addsphere"      data-set-action="addsphere">      Sphere      </li>
+				<li class="action__selector__options--option addicoshaedron" data-set-action="addicoshaedron"> Icosahedron </li>
+				<li class="action__selector__options--option addtorus"       data-set-action="addtorus">       Torus       </li>
+				<li class="action__selector__options--option addtorusknot"   data-set-action="addtorusknot">   Torus Knot  </li>
+				<li class="action__selector__options--option addsprite"      data-set-action="addsprite">      Sprite      </li>
+			</ul>
+		</div>
+
+		<div class="action__selector">
+			<div class="action__selector__current-action addbox" data-action="addBox"><span class="expand-options"></span></div>
+			<ul class="action__selector__options">
+				<li class="action__selector__options--option addplane"       data-set-action="addplane">       Plane       </li>
+				<li class="action__selector__options--option addbox"         data-set-action="addbox">         Box         </li>
+				<li class="action__selector__options--option addcircle"      data-set-action="addcircle">      Circle      </li>
+				<li class="action__selector__options--option addcylinder"    data-set-action="addcylinder">    Cylinder    </li>
+				<li class="action__selector__options--option addsphere"      data-set-action="addsphere">      Sphere      </li>
+				<li class="action__selector__options--option addicoshaedron" data-set-action="addicoshaedron"> Icosahedron </li>
+				<li class="action__selector__options--option addtorus"       data-set-action="addtorus">       Torus       </li>
+				<li class="action__selector__options--option addtorusknot"   data-set-action="addtorusknot">   Torus Knot  </li>
+				<li class="action__selector__options--option addsprite"      data-set-action="addsprite">      Sprite      </li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="action__play"></div>
+	
+</div>
+	</header>
+	<main>
+		<div class="viewport">
+	
+</div>
+		<div class="sidebar">
+	
+</div>
+	</main>
+	<footer>
+		<div class="tools">
+	
+</div>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>

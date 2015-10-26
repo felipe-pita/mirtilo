@@ -1,0 +1,185 @@
+<nav class="menu">
+	<ul class="menu__main-options">
+		<li class="menu__main-options--option">
+			<a href="#">File</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">New</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Import</a>
+				</li>
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Export</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option">
+							<a href="#">Export Geometry</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Export Object</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Export Scene</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Export OBJ</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Export STL</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Publish</a>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">Edit</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">Undo</a>
+				</li>
+				<li class="menu__submenu--option hr">
+					<a href="#">Redo</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Clone</a>
+				</li>
+				<li class="menu__submenu--option hr">
+					<a href="#">Delete</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Minify Shaders</a>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">Add</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">Group</a>
+				</li>
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Object</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option">
+							<a href="#">Plane</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Box</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Circle</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Cylinder</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Sphere</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Icosahedron</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Torus</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">TorusKnot</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Sprite</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Light</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option">
+							<a href="#">PointLight</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">SpotLight</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">DirectionalLight</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">HemisphereLight</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">AmbientLight</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Camera</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option">
+							<a href="#">PerspectiveCamera</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">View</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option has-extended">
+					<a href="#">Theme</a>
+					<ul class="menu__extended">
+						<li class="menu__extended--option active">
+							<a href="#">Dark theme</a>
+						</li>
+						<li class="menu__extended--option">
+							<a href="#">Light theme</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Full Screen</a>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">Examples</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">Arkanoide</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Camera</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Particles</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">Pong</a>
+				</li>
+			</ul>
+		</li>
+		<li class="menu__main-options--option">
+			<a href="#">Help</a>
+			<ul class="menu__submenu">
+				<li class="menu__submenu--option">
+					<a href="#">Source code</a>
+				</li>
+				<li class="menu__submenu--option">
+					<a href="#">About</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div class="menu__settings">
+		<div class="menu__settings--autosave">
+			<div class="checkbox">
+				<input id="autoSave" type="checkbox" value="on" checked>
+				<label for="autoSave">Auto Save</label>
+			</div>
+		</div>
+		<div class="menu__settings--button">
+			@@include('./images/settings.svg') Settings
+		</div>
+	</div>
+</nav>
