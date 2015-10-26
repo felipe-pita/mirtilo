@@ -132,13 +132,13 @@ main {
         display: block;
         white-space: pre;
         color: #DDD;
-        transition: background-color 0.3s ease, color 0.1s ease; }
+        transition: background-color .3s ease, color .1s ease; }
       .menu__main-options--option:hover > a {
         background-color: #444; }
       .menu__main-options--option:hover .menu__submenu {
         display: block;
-        -webkit-animation: submenuOpen 0.3s ease 1;
-                animation: submenuOpen 0.3s ease 1; }
+        -webkit-animation: submenuOpen .3s ease 1;
+                animation: submenuOpen .3s ease 1; }
   .menu__submenu {
     position: absolute;
     z-index: 500;
@@ -177,8 +177,8 @@ main {
         background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="5.997" height="12" viewBox="0 0 5.997 12"><path fill="#2194CE" d="M0 0v12l5.997-5.79"/></svg>'); }
       .menu__submenu--option:hover .menu__extended {
         display: block;
-        -webkit-animation: submenuOpen 0.3s ease 1;
-                animation: submenuOpen 0.3s ease 1; }
+        -webkit-animation: submenuOpen .3s ease 1;
+                animation: submenuOpen .3s ease 1; }
   .menu__extended {
     position: absolute;
     display: none;
@@ -335,7 +335,7 @@ main {
     border: 1px solid #2194CE;
     padding: 8px 8px 8px 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all .2s ease;
     background: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="18.49" height="22.107" viewBox="0 0 18.49 22.107"><path fill="#2194CE" d="M0 0l18.49 11.053L0 22.107"/></svg>') no-repeat 60% 50%; }
     .action__play:hover {
       background-color: #222; }
