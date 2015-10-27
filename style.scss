@@ -305,14 +305,22 @@ $submenuBG: $cinza4;
 		&__current-action {
 			width: 40px;
 			height: 40px;
-			padding: 8px;
-			background-repeat: no-repeat;
-			background-size: 22px;
-			background-position: center;
-			border: 1px solid $cinza4;
-			border-radius: 5px 0 0 5px;
 			position: relative;
 			cursor: pointer;
+
+			.icon { 
+				width: 100%;
+				height: 100%;
+				display: block;
+				padding: 8px;
+				background-repeat: no-repeat;
+				background-size: 22px;
+				background-position: center;
+				border-radius: 5px 0 0 5px;
+				border: 1px solid $cinza4;
+
+				&:hover{ background-color: $high; }
+			}
 
 			.expand-options {
 				display: block;
@@ -320,7 +328,7 @@ $submenuBG: $cinza4;
 				height: 40px;
 				position: absolute;
 				right: 0;
-				top: -1px;
+				top: 0;
 				margin-right: -15px;
 				border: 1px solid $cinza4;
 				border-radius: 0 5px 5px 0;
@@ -345,8 +353,25 @@ $submenuBG: $cinza4;
 				}
 
 				&.disabled {
-					background: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$high}"})');
+					cursor: default;
+
+					&:hover { background-color: lighten($cinza3, 2%); }
+
+					&::before {
+						background-image: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$cinza6}"})');
+					}
 				}
+			}
+		}
+
+		&.expanded {
+
+			.action__selector__current-action .icon {
+				border-radius: 5px 0 0 0;
+			}
+
+			.action__selector__options { 
+				display: block;
 			}
 		}
 
@@ -364,7 +389,7 @@ $submenuBG: $cinza4;
 				"perspectivecamera";
 
 		@each $icon in $icons {
-			.add#{$icon} { 
+			[data-action="add#{$icon}"] { 
 				background-image: url('#{$svg} @@include("images/#{$icon}.svg", { "fill": "#{$high}" }) '); 
 
 				&:hover { 
@@ -373,14 +398,24 @@ $submenuBG: $cinza4;
 			}
 		}
 
-
 		&__options {
-			// display: none;
+			display: none;
 			position: absolute;
 			background-color: darken($cinza3, 2%);
 			border: 1px solid $cinza4;
 			border-radius: 0 5px 5px 5px;
-			overflow: hidden;
+			margin-top: -1px;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 38px;
+				height: 1px;
+				background-color: darken($cinza3, 2%);
+				margin-top: -1px;
+				position: absolute;
+				z-index: 999;
+			}
 
 			&--option {
 				padding: 11px 8px 7px 27px;
@@ -390,6 +425,10 @@ $submenuBG: $cinza4;
 				line-height: 12px;
 				color: $cinzaC;
 				cursor: pointer;
+
+				&:first-child { border-radius: 0 4px 0 0; }
+
+				&:last-child { border-radius: 0 0 4px 4px; }
 
 				&:hover {
 					background-color: $high;
