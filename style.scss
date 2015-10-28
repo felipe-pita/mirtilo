@@ -37,10 +37,7 @@ $svg: 'data:image/svg+xml; utf8,';
 body { background-color: $cinza9; }
 
 // Header 
-header {
-
-}
-
+header { }
 
 // Viewport
 main {
@@ -50,14 +47,12 @@ main {
 }
 
 // sidebar
-aside {
-
-}
+aside { }
 
 
 // Tools
-footer {
-}
+footer { }
+
 
 // ----------------------------------------------------------------
 // Inputs
@@ -468,7 +463,8 @@ $submenuBG: $cinza4;
 
 .viewport {
 	width: 100%;
-	background-color: $cinzaA;
+	background: url('images/nautilao-colado.png') center bottom no-repeat $cinzaA;
+	background-size: 100%;
 }
 
 
@@ -493,7 +489,41 @@ $submenuBG: $cinza4;
 .tools {
 	width: 100%;
 	height: 40px;
+	display: flex;
 	flex-grow: 0;
 	flex-shrink: 0;
 	background-color: $cinza3;
+	padding: 5px 15px;
+
+	&__set {
+		width: 30px;
+		height: 30px;
+		position: relative;
+		cursor: pointer;
+		display: block;
+		padding: 8px;
+		background-repeat: no-repeat;
+		background-size: 15px;
+		background-position: center;
+		border-radius: 5px;
+		border: 1px solid $cinza4;
+		margin-right: 5px;
+
+		&:hover{ background-color: $high; }
+	}
+
+
+	$icons: "translate",
+			"rotate",
+			"scale";
+
+	@each $icon in $icons {
+		[data-tool="tool#{$icon}"] { 
+			background-image: url('#{$svg} @@include("images/#{$icon}.svg", { "fill": "#{$high}" }) '); 
+
+			&:hover { 
+				background-image: url('#{$svg} @@include("images/#{$icon}.svg", {"fill": "#{$cinza3}" }) '); 
+			} 
+		}
+	}
 }
