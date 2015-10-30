@@ -39,19 +39,25 @@ body { background-color: $cinza9; }
 // Header 
 header { }
 
+main { display: flex; }
+
 // Viewport
-main {
+section.viewport {
 	width: 100%;
-	height: calc(100vh - 140px);
+	height: calc(100vh - 100px);
 	display: flex;
 }
 
 // sidebar
-aside { }
+aside.sidebar { 
+	width: 250px;
+	flex-grow: 0;
+	flex-shrink: 0;
+}
 
+// tools
+.tools { align-self: flex-end; }
 
-// Tools
-footer { }
 
 
 // ----------------------------------------------------------------
@@ -461,7 +467,7 @@ $submenuBG: $cinza4;
 // Viewport
 // ================================================================
 
-.viewport {
+.scene-viewport {
 	width: 100%;
 	background: url('images/nautilao-colado.png') center bottom no-repeat $cinzaA;
 	background-size: 100%;
@@ -474,10 +480,112 @@ $submenuBG: $cinza4;
 // ================================================================
 
 .sidebar {
-	width: 250px;
-	flex-grow: 0;
-	flex-shrink: 0;
-	background-color: $cinza3;
+	background-color: $cinza1;
+
+	&__panel {
+
+		&--trigger {
+			font-size: 14px;
+			font-weight: 500;
+			padding: 10px 8px;
+			color: $cinza9;
+			background-color: $cinza4;
+			position: relative;
+
+			&::after {
+				content: "";
+				position: absolute;
+				width: 5px;
+				height: 10px;
+				background-image: url('#{$svg} @@include("images/arrow.svg", { "fill": "#{$cinza8}" })');
+				transform: rotate(90deg);
+				right: 15px;
+				top: 13px;
+			}
+		}
+
+		&.active {
+
+			.sidebar__panel--trigger::after { transform: rotate(-90deg); }
+
+		}
+
+		&--content {
+			display: none;
+			background-color: $cinza3;
+			padding: 5px;
+		}
+
+		&.active {
+			.sidebar__panel--content { display: block; }
+		}
+
+		// Scene panel
+		.scene__panel {
+			background-color: $cinza2;
+			min-height: 40vh;
+
+			.scene__panel__icon {
+				top: 7px;
+    			left: 15px;
+				position: absolute;
+				width: 14px;
+				height: 14px;
+				background-image: url('#{$svg} @@include("images/display.svg", { "fill": "#{ $cinza8 }" })');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+			}
+
+			&--item {
+				border: 1px solid $cinza4;
+				font-size: 11px;
+				color: $cinza9;
+				font-family: "Fira Mono", arial;
+				padding: 10px 10px 10px 35px;
+				margin-bottom: -1px;
+				position: relative;
+				cursor: grab;
+
+				&:active {
+					cursor: grabbing;
+				}
+
+				$sceneItemColor: "#61C6EC", "#A7FFA4", "#FDE756", "#F68658", "#D8B2DE";
+
+				@for $i from 1 through length( $sceneItemColor ) {
+					&:nth-child( #{$i} ) { 
+						box-shadow: 5px 0 #{nth( $sceneItemColor, $i)} inset;
+					}
+				}
+
+				&.active {
+					background-color: $cinzaB;
+
+					.scene__panel--name {
+						color: lighten( $cinza1, 4% );
+						font-weight: 600;
+					}
+
+					.scene__panel__icon { 
+						background-image: url('#{$svg} @@include("images/display.svg", { "fill": "#{ $cinza3 }" })');
+					}
+				}
+			}
+
+			&--name {
+				display: inline-block;
+				width: 100%;
+			}	
+
+			&--title {
+				display: inline-block;
+				width: 100%;
+				font-style: italic;
+				color: $cinza6;
+			}
+		}
+	}
 }
 
 

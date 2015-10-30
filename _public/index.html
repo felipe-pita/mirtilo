@@ -5,9 +5,10 @@
 	<title>Threejs editor</title>
 
 	<link rel="stylesheet" href="style.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic|Fira+Mono:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<header>
+	<header class="header">
 		<nav class="menu">
 	<ul class="menu__main-options">
 		<li class="menu__main-options--option">
@@ -240,23 +241,38 @@
 </div>
 	</header>
 	<main>
-		<div class="viewport">
-	
-</div>
-		<div class="sidebar">
-	
-</div>
-	</main>
-	<footer>
-		<div class="tools">
-	
+		<section class="viewport">
+			<div class="scene-viewport"></div>
+			<div class="tools">
 	<div class="tools__set" data-tool="tooltranslate"></div>
 	<div class="tools__set" data-tool="toolrotate"></div>
 	<div class="tools__set" data-tool="toolscale"></div>
-
 </div>
-	</footer>
+		</section>
+		<aside class="sidebar">
+			<div class="sidebar__panel active">
+	<div class="sidebar__panel--trigger">Scene</div>
+	<div class="sidebar__panel--content">
+		<div class="scene__panel">
+			<div class="scene__panel--item">
+				<span class="scene__panel__icon hide-n-show"></span>
+				<span class="scene__panel--name">Perspective</span>
+			</div>
+			<div class="scene__panel--item imported active">
+				<span class="scene__panel__icon hide-n-show"></span>
+				<span class="scene__panel--name">Perspective</span>
+				<span class="scene__panel--title">Super Rammus</span>
+			</div>
+		</div>
+	</div>
+</div>
 
+<div class="sidebar__panel">
+	<div class="sidebar__panel--trigger">Scene</div>
+	<div class="sidebar__panel--content"></div>
+</div>
+		</aside>
+	</main>
 	<script src="script.js"></script>
 </body>
 </html>

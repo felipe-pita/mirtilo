@@ -5,20 +5,22 @@
 	<title>Threejs editor</title>
 
 	<link rel="stylesheet" href="style.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic|Fira+Mono:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<header>
+	<header class="header">
 		@@include('./_menu.html')
 		@@include('./_action.html')
 	</header>
 	<main>
-		@@include('./_viewport.html')
-		@@include('./_sidebar.html')
+		<section class="viewport">
+			@@include('./_viewport.html')
+			@@include('./_tools.html')
+		</section>
+		<aside class="sidebar">
+			@@include('./_sidebar.html')
+		</aside>
 	</main>
-	<footer>
-		@@include('./_tools.html')
-	</footer>
-
 	<script src="script.js"></script>
 </body>
 </html>
