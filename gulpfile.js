@@ -8,6 +8,7 @@ var gulp         = require('gulp'),
     // STYLE
     sass         = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
+    str2base64   = require('gulp-css-str2base64'),
 
     // HTML
     fileinclude  = require('gulp-file-include'),
@@ -18,7 +19,7 @@ var gulp         = require('gulp'),
 
 
 
-var paths  = { image: './images/**/*', style: './style.scss', script: './script.js', html: './index.html'},
+var paths  = { image: './images/**/*', style: './style.scss', script: ['./script.js', './js/*.js'], html: './index.html'},
 
     dest   = './_public',
 
@@ -42,6 +43,7 @@ gulp.task('style', function () {
 			prefix: '@@',
 			basepath: '@file'
 		}).on('error', gutil.log))
+		.pipe(str2base64())
 		.pipe(autoprefixer({ browsers: ['last 2 versions'] }))
 		.pipe(gulp.dest(dest));
 });
@@ -49,7 +51,7 @@ gulp.task('style', function () {
 
 // SCRIPT
 gulp.task('script', function () {
-	gulp.src('./script.js')
+	gulp.src(paths.script)
 		.pipe(gulp.dest(dest));
 });
 

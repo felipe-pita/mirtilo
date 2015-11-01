@@ -27,7 +27,7 @@ $cinzaF: #FFF;
 
 $high: #2194CE;
 
-$svg: 'data:image/svg+xml; utf8,';
+$svg: 'data:image/svg+xml;base64,';
 
 
 // ----------------------------------------------------------------
@@ -46,11 +46,13 @@ section.viewport {
 	width: 100%;
 	height: calc(100vh - 100px);
 	display: flex;
+	background: url('images/nautilao-colado.png') center bottom no-repeat $cinzaA;
+	background-size: 100%;
 }
 
 // sidebar
 aside.sidebar { 
-	width: 250px;
+	width: 300px;
 	flex-grow: 0;
 	flex-shrink: 0;
 }
@@ -73,14 +75,15 @@ aside.sidebar {
 		vertical-align: middle;
 		appearance: none;
 		outline: 0;
+		position: relative;
 
 		&::before, &::after {
 			content: "";
 			display: none;
 			position: absolute;
 			display: block;
-			width: 14px;
-			height: 14px;
+			width: 100%;
+			height: 100%;
 			cursor: pointer;
 		}
 
@@ -91,7 +94,8 @@ aside.sidebar {
 
 		&:checked::after {
 			display: block;
-			background: url('#{$svg} @@include("images/check.svg", {"fill": "#{$high}"})') center no-repeat;
+			background: url(' #{$svg} str2base64(" @@include( "images/check.svg", { "fill": "#{$high}" } ) ") ') center no-repeat; 
+			background-size: 70%;
 		}
 	}
 
@@ -124,7 +128,7 @@ $submenuBG: $cinza4;
 		content: "";
 		width: 13px;
 		height: 13px;
-		background: url('#{$svg} @@include("images/check.svg", {"fill": "#{$high}"})') no-repeat center;
+		background: url('#{$svg} str2base64(" @@include("images/check.svg", {"fill": "#{$high}"}) ") ') no-repeat center;
 		display: block;
 		position: absolute;
 		margin: 10px 10px 0 0;
@@ -195,12 +199,12 @@ $submenuBG: $cinza4;
 				height: 12px;
 				position: absolute;
 				right: 10px;
-				background: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$submenuColor}"})') no-repeat center;
+				background: url('#{$svg} str2base64(" @@include("images/arrow.svg", {"fill": "#{$submenuColor}"}) ") ') no-repeat center;
 				margin-top: -24px;
 			}
 
 			&.has-extended:hover::after { 
-				background-image: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$high}"})');
+				background-image: url('#{$svg} str2base64(" @@include("images/arrow.svg", {"fill": "#{$high}"}) ")');
 			}
 
 			&:hover .menu__extended { display: block; animation: submenuOpen .3s ease 1; }
@@ -344,7 +348,7 @@ $submenuBG: $cinza4;
 					width: 6px;
 					height: 12px;
 					transform: rotate(90deg);
-					background-image: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$high}"})');
+					background-image: url('#{$svg} str2base64(" @@include("images/arrow.svg", {"fill": "#{$high}"}) ")');
 					background-repeat: no-repeat;
 					background-position: center;
 					left: 50%;
@@ -359,7 +363,7 @@ $submenuBG: $cinza4;
 					&:hover { background-color: lighten($cinza3, 2%); }
 
 					&::before {
-						background-image: url('#{$svg} @@include("images/arrow.svg", {"fill": "#{$cinza6}"})');
+						background-image: url('#{$svg} str2base64(" @@include("images/arrow.svg", {"fill": "#{$cinza6}"}) ")');
 					}
 				}
 			}
@@ -391,10 +395,10 @@ $submenuBG: $cinza4;
 
 		@each $icon in $icons {
 			[data-action="add#{$icon}"] { 
-				background-image: url('#{$svg} @@include("images/#{$icon}.svg", { "fill": "#{$high}" }) '); 
+				background-image: url('#{$svg} str2base64(" @@include("images/#{$icon}.svg", { "fill": "#{$high}" }) ")'); 
 
 				&:hover { 
-					background-image: url('#{$svg} @@include("images/#{$icon}.svg", {"fill": "#{$cinza3}" }) '); 
+					background-image: url('#{$svg} str2base64(" @@include("images/#{$icon}.svg", {"fill": "#{$cinza3}" }) ")'); 
 				} 
 			}
 		}
@@ -448,7 +452,7 @@ $submenuBG: $cinza4;
 		padding: 8px 8px 8px 12px;
 		cursor: pointer;
 		transition: all .2s ease;
-		background: url('#{$svg} @@include("images/play.svg", { "fill": "#{$high}" })') no-repeat 60% 50%;
+		background: url('#{$svg} str2base64(" @@include("images/play.svg", { "fill": "#{$high}" })")') no-repeat 60% 50%;
 
 		&:hover { 
 			background-color: $cinza2; 
@@ -456,7 +460,7 @@ $submenuBG: $cinza4;
 
 		&:active { 
 			background-color: $high;
-			background-image: url('#{$svg} @@include("images/play.svg", { "fill": "#{$cinza3}" })');
+			background-image: url('#{$svg} str2base64(" @@include("images/play.svg", { "fill": "#{$cinza3}" }) ")');
 		}
 	}
 }
@@ -481,8 +485,31 @@ $submenuBG: $cinza4;
 
 .sidebar {
 	background-color: $cinza1;
+	height: calc( 100vh - 100px );
+	overflow-y: scroll;
+	overflow-x: auto;
+	position: relative;
+
+	&::-webkit-scrollbar { display: none; }
+
+	.resize-control {
+		width: 5px;
+		height: 100%;
+		background-color: $cinza6;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 600;
+		cursor: col-resize;
+	}
+
+	&__container {
+		margin-left: 5px;
+		min-height: 100%;
+	}
 
 	&__panel {
+		margin-bottom: 1px;
 
 		&--trigger {
 			font-size: 14px;
@@ -491,13 +518,16 @@ $submenuBG: $cinza4;
 			color: $cinza9;
 			background-color: $cinza4;
 			position: relative;
+			cursor: pointer;
 
 			&::after {
 				content: "";
 				position: absolute;
 				width: 5px;
 				height: 10px;
-				background-image: url('#{$svg} @@include("images/arrow.svg", { "fill": "#{$cinza8}" })');
+				background-image: url('#{$svg} str2base64(" @@include("images/arrow.svg", { "fill": "#{$cinza8}" }) ")');
+				background-repeat: no-repeat;
+				background-position: center;
 				transform: rotate(90deg);
 				right: 15px;
 				top: 13px;
@@ -507,37 +537,48 @@ $submenuBG: $cinza4;
 		&.active {
 
 			.sidebar__panel--trigger::after { transform: rotate(-90deg); }
-
 		}
 
 		&--content {
 			display: none;
 			background-color: $cinza3;
-			padding: 5px;
+			padding: 10px;
+			transform-origin: center 0;
 		}
 
 		&.active {
-			.sidebar__panel--content { display: block; }
+
+			.sidebar__panel--content { 
+				display: block; 
+				animation: panelExpand .3s ease 1;
+			}
 		}
 
 		// Scene panel
 		.scene__panel {
 			background-color: $cinza2;
-			min-height: 40vh;
+			min-height: 25vh;
 
 			.scene__panel__icon {
 				top: 7px;
-    			left: 15px;
+				left: 15px;
 				position: absolute;
 				width: 14px;
 				height: 14px;
-				background-image: url('#{$svg} @@include("images/display.svg", { "fill": "#{ $cinza8 }" })');
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: contain;
+				cursor: pointer;
+
+				&.hide-n-show { 
+					background-image: url('#{$svg} str2base64(" @@include("images/display.svg", { "fill": "#{ $cinza8 }" }) ")'); 
+
+					&:hover { background-image: url('#{$svg} str2base64(" @@include("images/hide.svg", { "fill": "#{ $cinza8 }" }) ")'); }
+				}
 			}
 
 			&--item {
+				background-color: lighten($cinza2, 4%);
 				border: 1px solid $cinza4;
 				font-size: 11px;
 				color: $cinza9;
@@ -554,7 +595,7 @@ $submenuBG: $cinza4;
 				$sceneItemColor: "#61C6EC", "#A7FFA4", "#FDE756", "#F68658", "#D8B2DE";
 
 				@for $i from 1 through length( $sceneItemColor ) {
-					&:nth-child( #{$i} ) { 
+					&[data-index="#{$i}"] { 
 						box-shadow: 5px 0 #{nth( $sceneItemColor, $i)} inset;
 					}
 				}
@@ -568,7 +609,7 @@ $submenuBG: $cinza4;
 					}
 
 					.scene__panel__icon { 
-						background-image: url('#{$svg} @@include("images/display.svg", { "fill": "#{ $cinza3 }" })');
+						background-image: url('#{$svg} str2base64(" @@include("images/display.svg", { "fill": "#{ $cinza3 }" }) ")');
 					}
 				}
 			}
@@ -583,11 +624,140 @@ $submenuBG: $cinza4;
 				width: 100%;
 				font-style: italic;
 				color: $cinza6;
+				margin-top: 3px;
+			}
+		}
+
+		.inputs__panel {
+			padding: 10px 5px;
+			font-family: "Fira Mono", monospaced;
+
+			&--line {
+				display: flex;
+				margin-bottom: 10px;
+
+				&:last-child { margin-bottom: 0; }
+			}
+
+			&--inputs {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				width: 100%;
+			}
+
+			&--label {
+				font-size: 11px;
+				color: $cinza9;
+				width: 100px;
+				flex-shrink: 0;
+				margin-right: 10px;
+				padding: 6px 0;
+
+				label { display: block; }
+
+				&.buttons { padding-top: 10px; }
+			}
+
+			&--button {
+				width: 30px;
+				height: 30px;
+				border-radius: 5px;
+				border: 1px solid $cinza5;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 18px 18px;
+				cursor: pointer;
+
+				$icons: "align",
+						"rotate",
+						"flatten";
+
+				@each $icon in $icons {
+					&[data-action="#{$icon}"] { 
+						background-image: url('#{$svg} str2base64(" @@include("images/#{$icon}.svg", { "fill": "#{$high}" }) ")'); 
+
+						&:hover { 
+							background-color: $high;
+							background-image: url('#{$svg} str2base64(" @@include("images/#{$icon}.svg", {"fill": "#{$cinza3}" }) ")'); 
+						} 
+					}
+				}
+			}
+
+			&--input {
+				color: $high;
+				border: 0;
+				padding: 0;
+				width: 100%;
+				font-family: "Fira Mono", monospaced;
+				font-size: 11px;
+				background-color: $cinza4;
+				margin-right: 10px;
+				padding: 2px 4px;
+
+				&:last-child { margin-right: 0; }
+
+				&.number { 
+					text-align: center; 
+
+					&.alone { 
+						width: 36px;
+						flex-shrink: 0;
+					}
+				}
+
+				&.gray { color: $cinza9; }
+			}
+
+			.checkbox input {
+				width: 20px;
+				height: 20px;
+			}
+
+			select {
+				background-color: $cinza4;
+				border: 0;
+				color: $high;
+				font-size: 11px;
+				padding: 4px;
+			}
+
+			textarea { 
+				text-align: left; 
+				padding: 4px;
+				resize: vertical;
+			}
+
+			&--color {
+				width: 40px;
+				height: 30px;
+				border: 0;
+				padding: 0;
+				-webkit-appearance: none;
+				background-color: transparent;
+				border-image: none;
+				border-image-width: 0;
+				display: block;
+				margin: -4px -2px;
 			}
 		}
 	}
 }
 
+
+.ghost { opacity: 0.5; }
+
+
+@keyframes panelExpand {
+	from { 
+		opacity: 0;
+	}
+	
+	to   { 
+		opacity: 1;
+	}
+}
 
 
 // ----------------------------------------------------------------
@@ -627,10 +797,10 @@ $submenuBG: $cinza4;
 
 	@each $icon in $icons {
 		[data-tool="tool#{$icon}"] { 
-			background-image: url('#{$svg} @@include("images/#{$icon}.svg", { "fill": "#{$high}" }) '); 
+			background-image: url('#{$svg} str2base64(" @@include("images/#{$icon}.svg", { "fill": "#{$high}" }) ")'); 
 
 			&:hover { 
-				background-image: url('#{$svg} @@include("images/#{$icon}.svg", {"fill": "#{$cinza3}" }) '); 
+				background-image: url('#{$svg} str2base64(" @@include("images/#{$icon}.svg", {"fill": "#{$cinza3}" }) ")'); 
 			} 
 		}
 	}

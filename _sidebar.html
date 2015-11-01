@@ -1,21 +1,211 @@
-<div class="sidebar__panel active">
-	<div class="sidebar__panel--trigger">Scene</div>
-	<div class="sidebar__panel--content">
-		<div class="scene__panel">
-			<div class="scene__panel--item">
-				<span class="scene__panel__icon hide-n-show"></span>
-				<span class="scene__panel--name">Perspective</span>
-			</div>
-			<div class="scene__panel--item imported active">
-				<span class="scene__panel__icon hide-n-show"></span>
-				<span class="scene__panel--name">Perspective</span>
-				<span class="scene__panel--title">Super Rammus</span>
+<div class="resize-control"></div>
+
+<div class="sidebar__container">
+
+	<div class="sidebar__panel active">
+		<div class="sidebar__panel--trigger">Scene</div>
+		<div class="sidebar__panel--content">
+			<div class="scene__panel" id="secene__panel">
+				<div class="scene__panel--item" data-index="1">
+					<span class="scene__panel__icon hide-n-show"></span>
+					<span class="scene__panel--name">Perspective Camera 1</span>
+				</div>
+				<div class="scene__panel--item imported active" data-index="2">
+					<span class="scene__panel__icon hide-n-show"></span>
+					<span class="scene__panel--name">Perspective</span>
+					<span class="scene__panel--title">Super nautilus</span>
+				</div>
+				<div class="scene__panel--item" data-index="3">
+					<span class="scene__panel__icon hide-n-show"></span>
+					<span class="scene__panel--name">Box 1</span>
+				</div>
+				<div class="scene__panel--item" data-index="4">
+					<span class="scene__panel__icon hide-n-show"></span>
+					<span class="scene__panel--name">Point Light 1</span>
+				</div>
+				<div class="scene__panel--item" data-index="5">
+					<span class="scene__panel__icon hide-n-show"></span>
+					<span class="scene__panel--name">Hemisphere light</span>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="sidebar__panel">
-	<div class="sidebar__panel--trigger">Scene</div>
-	<div class="sidebar__panel--content"></div>
+	<div class="sidebar__panel">
+		<div class="sidebar__panel--trigger">Box Geometry</div>
+		<div class="sidebar__panel--content">
+			<div class="sidebar__box-geometry">
+				<div class="inputs__panel">
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label buttons"><label>Actions</label></div>
+						<div class="inputs__panel--inputs">
+							<div class="inputs__panel--button" data-action="align"></div>
+							<div class="inputs__panel--button" data-action="rotate"></div>
+							<div class="inputs__panel--button" data-action="flatten"></div>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Position</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="text" class="inputs__panel--input number" value="0.00">
+							<input type="text" class="inputs__panel--input number" value="84.00">
+							<input type="text" class="inputs__panel--input number" value="0.00">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Rotate</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="text" class="inputs__panel--input number" value="0.00">
+							<input type="text" class="inputs__panel--input number" value="84.00">
+							<input type="text" class="inputs__panel--input number" value="0.00">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Scale</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="text" class="inputs__panel--input number" value="0.00">
+							<input type="text" class="inputs__panel--input number" value="84.00">
+							<input type="text" class="inputs__panel--input number" value="0.00">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>User data</label></div>
+						<div class="inputs__panel--inputs">
+							<textarea class="inputs__panel--input gray" name="" cols="30" rows="4">{}</textarea>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>UUID</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="text" class="inputs__panel--input gray" value="43D18651-063B-4CF4-AF6B-715D9BA69DD7">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="sidebar__panel active">
+		<div class="sidebar__panel--trigger">Material</div>
+		<div class="sidebar__panel--content">
+			<div class="sidebar__box-geometry">
+				<div class="inputs__panel">
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Name</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="text" class="inputs__panel--input" value="">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Type</label></div>
+						<div class="inputs__panel--inputs">
+							<select class="inputs__panel--inputs">
+								<option value="LineBasicMaterial">LineBasicMaterial</option>
+								<option value="LineDashedMaterial">LineDashedMaterial</option>
+								<option value="MeshBasicMaterial">MeshBasicMaterial</option>
+								<option value="MeshDepthMaterial">MeshDepthMaterial</option>
+								<option value="MeshLambertMaterial">MeshLambertMaterial</option>
+								<option value="MeshNormalMaterial">MeshNormalMaterial</option>
+								<option value="MeshPhongMaterial">MeshPhongMaterial</option>
+								<option value="ShaderMaterial">ShaderMaterial</option>
+								<option value="SpriteMaterial">SpriteMaterial</option>
+							</select>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Color</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="color" class="inputs__panel--color" value="#ffffff">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Emissive</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="color" class="inputs__panel--color" value="#000000">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Specular</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="color" class="inputs__panel--color" value="#000000">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Shininess</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="text" class="inputs__panel--input number alone" value="">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Vertex Colors</label></div>
+						<div class="inputs__panel--inputs">
+							<select class="inputs__panel--inputs">
+								<option value="0">No</option>
+								<option value="1">Face</option>
+								<option value="2">Vertex</option>
+							</select>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Skinning</label></div>
+						<div class="inputs__panel--inputs">
+							<div class="checkbox"><input id="autoSave" type="checkbox" value="off"></div>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Side</label></div>
+						<div class="inputs__panel--inputs">
+							<select class="inputs__panel--inputs">
+								<option value="0">Front</option>
+								<option value="1">Back</option>
+								<option value="2">Double</option>
+							</select>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Shading</label></div>
+						<div class="inputs__panel--inputs">
+							<select class="inputs__panel--inputs">
+								<option value="0">No</option>
+								<option value="1">Flat</option>
+								<option value="2">Smooth</option>
+							</select>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Blending</label></div>
+						<div class="inputs__panel--inputs">
+							<select class="inputs__panel--inputs">
+								<option value="0">No</option>
+								<option value="1">Normal</option>
+								<option value="2">Additive</option>
+								<option value="3">Subtractive</option>
+								<option value="4">Multiply</option>
+								<option value="5">Custom</option>
+							</select>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Opacity</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="text" class="inputs__panel--input number alone" value="1.00">
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>Transparent</label></div>
+						<div class="inputs__panel--inputs">
+							<div class="checkbox"><input id="autoSave" type="checkbox" value="off"></div>
+						</div>
+					</div>
+					<div class="inputs__panel--line">
+						<div class="inputs__panel--label"><label>UUID</label></div>
+						<div class="inputs__panel--inputs">
+							<input type="text" class="inputs__panel--input gray" value="43D18651-063B-4CF4-AF6B-715D9BA69DD7">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
