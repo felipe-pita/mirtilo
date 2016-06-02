@@ -2,4 +2,4 @@
 
 A school project
 
-![UI](ui.png)
+![UI](screenshots/ui.png)
